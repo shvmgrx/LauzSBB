@@ -1,0 +1,129 @@
+<body id="home" class="scrollspy">
+
+
+<nav class="red darken-3">
+    <div class="nav-wrapper z-depth-5">
+        <a href="#!" class="brand-logo center">SBB CFF FFS</a>
+
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="https://www.sbb.ch/" class="white-text">Search</a>
+            </li>
+            <li>
+                <a href="https://www.sbb.ch/de/abos-billette/kaufmoeglichkeiten/abos-und-billette-kaufen.html" class="white-text">To buy</a>
+            </li>
+            <li>
+                <a href="https://www.sbb.ch/de/abos-billette/kaufmoeglichkeiten/abos-und-billette-kaufen.html" class="white-text">Login</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+
+<!-- FIXED ACTION BUTTON -->
+<div class="fixed-action-btn">
+    <a href="#" class="btn-floating red btn-large"><i class="large material-icons">mode_edit</i></a>
+    <ul>
+        <li><a href="#" class="btn-floating yellow btn-large"><i class="large material-icons">insert_chart</i></a></li>
+        <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">format_quote</i></a></li>
+        <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">publish</i></a></li>
+        <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">attach_file</i></a></li>
+    </ul>
+</div>
+
+
+
+
+
+<!-- Section: Search -->
+<section id="search" class="section section-search  center scrollspy">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field">
+                    <!--<div class="card-panel red darken-3"> -->
+
+                    <form action="/search/result" method="post">
+                    <input type="text" class="white red-text darken-3 autocomplete" name="dep" required="true" placeholder="FROM">
+                    <input type="text" class="white red-text darken-3 autocomplete" name="arr" required="true" placeholder="TO">
+
+                    <input type="date" class="white red-text darken-3 autocomplete" name="date" required="true" placeholder="DATE">
+                    <input type="time" class="white red-text darken-3 autocomplete" name="time" required="true" placeholder="TIME">
+                    <input type="checkbox" class="white red-text darken-3" name="isArrivalTime" >
+
+                    <button type="submit" class="btn red darken-3" name="submit"><i class="material-icons left">search</i>Submit</button>
+                    </span>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+
+
+
+
+<!--JavaScript at end of body for optimized loading-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+<script>
+
+
+    // Sidenav
+    const sideNav = document.querySelector('.sidenav');
+    M.Sidenav.init(sideNav, {});
+    // Slider
+    const slider = document.querySelector('.slider');
+    M.Slider.init(slider, {
+        indicators: false,
+        height: 500,
+        transition: 500,
+        interval: 6000
+    });
+    // Autocomplete
+    const ac = document.querySelector('.autocomplete');
+
+
+
+    M.Autocomplete.init(ac, {
+        data: {
+            "Zurich": null,
+            "Lausanne": null,
+            "Bern": null,
+            "Basel": null,
+            "Geneva": null,
+            "Lucerne": null,
+        }
+    });
+    // Material Boxed
+    const mb = document.querySelectorAll('.materialboxed');
+    M.Materialbox.init(mb, {});
+    // ScrollSpy
+    const ss = document.querySelectorAll('.scrollspy');
+    M.ScrollSpy.init(ss, {});
+</script>
+
+<script>
+    $(document).ready(function() {
+        var onlyStations = [];
+        var stations = {{stations}};
+
+        console.log(stations);
+
+        for (var i in stations) {
+            onlyStations.push(stations[i]);
+        }
+
+        console.log(onlyStations);
+    });
+
+</script>
+</body>
+
