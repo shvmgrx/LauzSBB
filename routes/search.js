@@ -7,11 +7,7 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
 
 
-
-
-
-
-res.render('search');
+    res.render('search');
 })
 ;
 
@@ -28,18 +24,15 @@ router.get('/options', function (req, res, next) {
 //Search all the correspondances and Parking lots
 router.post('/result', function (req, res, next) {
 
-    research.find3FirstStation(req.body).then((nearbyStation) => {
-        research.parkingDataStations(nearbyStation).then((parkingDataStations) => {
-            console.log(parkingDataStations);
+    research.correspondances(req.body).then((dataTrain) => {
+        research.find3FirstStation(req.body).then((nearbyStation) => {
+            research.parkingDataStations(nearbyStation).then((parkingDataStations) => {
 
+                console.log(parkingDataStations);
+                res.render('parkings', {dataTrain: JSON.parse(dataTrain), dataParking: nearbyStation});
+            });
         });
     });
-
-    research.correspondances(req.body).then((dataTrain) => {
-        res.render('parkings', {dataTrain: encodeURIComponent(dataTrain), data: JSON.parse(dataTrain)});
-    });
-
-
 });
 
 

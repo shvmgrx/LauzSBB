@@ -30,19 +30,20 @@
     <br>
 
     <p class="flow-text">
-    <h4><b>{{data.connections.0.from.station.name}} <i
-            class="fas fa-arrow-right"></i> {{data.connections.0.to.station.name}}</b></h4>
+    <h4><b>{{dataTrain.connections.0.from.station.name}} <i
+            class="fas fa-arrow-right"></i> {{dataTrain.connections.0.to.station.name}}</b></h4>
 
-    {{dateFormat datat.connections.0.from.departure 'DD MMMM YYYY'}}
+    {{dateFormat dataTrain.connections.0.from.departure 'DD MMMM YYYY'}}
 
 
 
     <table class="table table-user-information">
         <tbody>
-        {{#each data.connections}}
+        {{#each dataTrain.connections}}
             <tr>
-                <td><i class="far fa-clock"></i>  {{dateFormat this.from.departure 'HH:mm'}} Pl:{{this.from.platform}}</td>
-                <td> <i class="far fa-clock"></i>{{dateFormat this.to.arrival 'HH:mm'}} Pl:{{this.from.platform}}</td>
+                <td><i class="far fa-clock"></i>  {{dateFormat this.from.departure 'HH:mm'}} Pl:{{this.from.platform}}
+                </td>
+                <td><i class="far fa-clock"></i>{{dateFormat this.to.arrival 'HH:mm'}} Pl:{{this.from.platform}}</td>
             </tr>
         {{/each}}
 
@@ -50,34 +51,22 @@
     </table>
 
 
+
+
     <br>
 
     <h4>Where do you want to park:</h4>
     <ul class="collapsible" data-collapsible="accordion">
+        {{#each dataParking}}
         <li>
             <div class="collapsible-header">
-                <i class="material-icons">filter_drama</i>First
+                <i class="material-icons">filter_drama</i>{{this}}
             </div>
             <div class="collapsible-body">
                 <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, totam?</span>
             </div>
         </li>
-        <li>
-            <div class="collapsible-header active">
-                <i class="material-icons">filter_drama</i>Second
-            </div>
-            <div class="collapsible-body">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, totam?</span>
-            </div>
-        </li>
-        <li>
-            <div class="collapsible-header">
-                <i class="material-icons">filter_drama</i>Third
-            </div>
-            <div class="collapsible-body">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, totam?</span>
-            </div>
-        </li>
+        {{/each}}
     </ul>
 
 
@@ -97,14 +86,14 @@
 
 <script>
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems, options);
     });
 
     // Or with jQuery
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('.collapsible').collapsible();
     });
 
