@@ -24,13 +24,7 @@
 
 <!-- FIXED ACTION BUTTON -->
 <div class="fixed-action-btn">
-    <a href="#" class="btn-floating red btn-large"><i class="large material-icons">mode_edit</i></a>
-    <ul>
-        <li><a href="#" class="btn-floating yellow btn-large"><i class="large material-icons">insert_chart</i></a></li>
-        <li><a href="#" class="btn-floating blue btn-large"><i class="large material-icons">format_quote</i></a></li>
-        <li><a href="#" class="btn-floating green btn-large"><i class="large material-icons">publish</i></a></li>
-        <li><a href="#" class="btn-floating orange btn-large"><i class="large material-icons">attach_file</i></a></li>
-    </ul>
+    <a href="/search" class="btn-floating red btn-large"><i class="large material-icons">mode_edit</i></a>
 </div>
 
 
@@ -46,8 +40,8 @@
                     <!--<div class="card-panel red darken-3"> -->
 
                     <form action="/search/details" method="post">
-                    <input type="text" class="white red-text darken-3 autocomplete" name="dep" required="true" placeholder="FROM">
-                    <input type="text" class="white red-text darken-3 autocomplete" name="arr" required="true" placeholder="TO">
+                    <input type="text" class="white red-text darken-3 autocomplete" name="dep" required="true" autocomplete="off" placeholder="FROM">
+                    <input type="text" class="white red-text darken-3 autocomplete" name="arr" required="true" autocomplete="off" placeholder="TO">
 
                     <input type="date" class="white red-text darken-3 autocomplete" name="date" required="true" placeholder="DATE">
                     <input type="time" class="white red-text darken-3 autocomplete" name="time" required="true" placeholder="TIME">

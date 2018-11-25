@@ -4,7 +4,7 @@
 
 <nav class="red darken-3">
     <div class="nav-wrapper z-depth-5">
-        <a href="#!" class="brand-logo center">SBB CFF FFS opt</a>
+        <a href="#!" class="brand-logo center">SBB CFF FFF</a>
 
         <ul class="right hide-on-med-and-down">
             <li>
@@ -33,7 +33,7 @@
                 <img src="/img/PRlogo.png" class="responsive-img " >
                 <br>
                 <span class="card-title black-text">Park & Rail</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red btn-large"><i class="material-icons black darken-3">add</i></a>
+                <a href="search/options" class="btn-floating halfway-fab waves-effect waves-light red btn-large"><i class="material-icons black darken-3">add</i></a>
                 <div class="card-content">
                 </div>
             </div>
@@ -48,25 +48,11 @@
                 <div class="card-content">
                 </div>
             </div>
-
         </div></div>
     </div>
 
+    <canvas id="doughnut-chart" width="800" height="450"></canvas>
 
-    <div class="row">
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <canvas id="myChart"></canvas>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 </div>
@@ -120,25 +106,20 @@
 
 <script>
 
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
-
-        // The data for our dataset
+    new Chart(document.getElementById("doughnut-chart"), {
+        type: 'doughnut',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [{
-                label: "My First dataset",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45],
-            }]
-        },
-
-        // Configuration options go here
-        options: {}
+            labels: ["Train", "Car"],
+            datasets: [
+                {
+                    label: "Means of transport ",
+                    backgroundColor: ["#b71c1c", "#b5abae"],
+                    data: [27,73]
+                }
+            ]
+        }
     });
+
 
 
 </script>

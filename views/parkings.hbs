@@ -63,6 +63,8 @@
     <h4>Where do you want to park:</h4>
   <div class="row center-align">
     <ul class="collapsible col s6 push-s3" data-collapsible="accordion">
+
+
         {{#each dataParking}}
         <li>
             <div class="collapsible-header">
@@ -83,8 +85,6 @@
                     Math.floor((Math.random() * 3) + 1);
                     </script>
 
-
-                     
     <p class="range-field">
       <input type="range" id="duration{{this}}" min="1" max="10" />
     </p>
@@ -94,6 +94,7 @@
             </div>
         </li>
         {{/each}}
+
     </ul>
  </div>
 
@@ -111,15 +112,15 @@ function calc(parking)
 }
      
  </script>
-<p class="flow-text">TOTAL COST:€<h2 id="tc">0</h2></p>
+<p class="flow-text">TOTAL COST:<h2 id="tc">0</h2></p>
     </p>
 
 
 </div>
 <!-- FIXED ACTION BUTTON -->
 <div class="fixed-action-btn ">
-    <a href="/search" class="btn-floating red btn-large left-align"><i
-            class="large material-icons">arrow_back</i></a>
+    <a href="/search/result/{{dataTrain.connections.0.from.station.name}}/{{dataTrain.connections.0.to.station.name}}" class="btn-floating red btn-large left-align"><i
+            class="large material-icons">send</i></a>
 </div>
 
 
