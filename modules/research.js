@@ -47,6 +47,7 @@ var self = module.exports = {
                         stationsNearby.push(JSON.parse(dataTrain).connections[0].sections[0].journey.passList[i].station.name)
                     }
                     resolve(stationsNearby);
+                    
                 });
             }).on("error", (err) => {
                 console.log("Error: " + err.message);
