@@ -22,7 +22,7 @@ router.get('/options', function (req, res, next) {
 
 
 //Search all the correspondances and Parking lots
-router.post('/result', function (req, res, next) {
+router.post('/details', function (req, res, next) {
 
     research.correspondances(req.body).then((dataTrain) => {
         research.find3FirstStation(req.body).then((nearbyStation) => {
@@ -33,6 +33,15 @@ router.post('/result', function (req, res, next) {
             });
         });
     });
+});
+
+
+router.post('/result', function (req, res, next) {
+
+   
+
+        res.render('parkings');
+ 
 });
 
 

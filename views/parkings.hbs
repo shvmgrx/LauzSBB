@@ -25,7 +25,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container center-align">
 
     <br>
 
@@ -33,43 +33,82 @@
     <h4><b>{{dataTrain.connections.0.from.station.name}} <i
             class="fas fa-arrow-right"></i> {{dataTrain.connections.0.to.station.name}}</b></h4>
 
-    {{dateFormat dataTrain.connections.0.from.departure 'DD MMMM YYYY'}}
+   <p class="flow-text"> {{dateFormat dataTrain.connections.0.from.departure 'DD MMMM YYYY'}}</p>
 
 
+<br>
+ <div class="row">
+       <div class="col s4 push-s2 "><div class="card-panel red darken-3 white-text">DEPARTURE</div></div>
+       <div class="col s4 push-s2"><div class="card-panel light-green darken-3 white-text">ARRIVAL</div></div>
+    
 
     <table class="table table-user-information">
         <tbody>
         {{#each dataTrain.connections}}
             <tr>
-                <td><i class="far fa-clock"></i>  {{dateFormat this.from.departure 'HH:mm'}} Pl:{{this.from.platform}}
+                <td class="col s3 push-s3"><i class="far fa-clock"></i>  {{dateFormat this.from.departure 'HH:mm'}} Pl:{{this.from.platform}}
                 </td>
-                <td><i class="far fa-clock"></i>{{dateFormat this.to.arrival 'HH:mm'}} Pl:{{this.from.platform}}</td>
+                <td class="col s3 push-s4"><i class="far fa-clock"></i>{{dateFormat this.to.arrival 'HH:mm'}} Pl:{{this.from.platform}}</td>
             </tr>
         {{/each}}
 
         </tbody>
     </table>
-
+ </div>
 
 
 
     <br>
 
     <h4>Where do you want to park:</h4>
-    <ul class="collapsible" data-collapsible="accordion">
+  <div class="row center-align">
+    <ul class="collapsible col s6 push-s3" data-collapsible="accordion">
         {{#each dataParking}}
         <li>
             <div class="collapsible-header">
-                <i class="material-icons">filter_drama</i>{{this}}
+                <i class="material-icons">directions_car</i>{{this}}
             </div>
             <div class="collapsible-body">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, totam?</span>
+                <span>
+                    AVAILABLE PARKING SPOTS:<h4 id="spots{{this}}"></h4>
+                    COST(€/hr):<h4 id="cost{{this}}"></h4><br>
+
+                     <script>
+                    document.getElementById("spots{{this}}").innerHTML =
+                    Math.floor(Math.random() * 100);
+                    </script>
+
+                    <script>
+                    document.getElementById("cost{{this}}").innerHTML =
+                    Math.floor((Math.random() * 3) + 1);
+                    </script>
+
+
+                     
+    <p class="range-field">
+      <input type="range" id="duration"+"{{this}}" min="1" max="10" />
+    </p>
+    <button onclick='calc("{{this}}")'>SUBMIT</button>
+  
+                </span>
             </div>
         </li>
         {{/each}}
     </ul>
+ </div>
 
+ <script>
 
+function calc(parking)
+{
+    console.log("cost"+parking);
+    var cost = document.getElementById("cost"+parking);
+    var duration = document.getElementById("duration"+parking).value;
+    console.log(cost.value);
+}
+     
+ </script>
+<p class="flow-text">TOTAL COST:<h2 id="tc"></h2></p>
     </p>
 
 
@@ -88,7 +127,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.collapsible');
-        var instances = M.Collapsible.init(elems, options);
+        var instances = M.Collapsible.init(elems);
     });
 
     // Or with jQuery
@@ -96,7 +135,7 @@
     $(document).ready(function () {
         $('.collapsible').collapsible();
     });
-
+ 
 
     // Sidenav
     const sideNav = document.querySelector('.sidenav');
@@ -121,6 +160,9 @@
             "Lucerne": null,
         }
     });
+
+
+
     // Material Boxed
     const mb = document.querySelectorAll('.materialboxed');
     M.Materialbox.init(mb, {});
