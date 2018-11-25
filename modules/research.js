@@ -100,5 +100,34 @@ var self = module.exports = {
         });
     },
 
+    getAllStations() {
+        return new Promise((resolve, reject) => {
+
+            var stations = [];
+
+            var url = 'http://data.sbb.ch/api/records/1.0/search/?dataset=betriebspunkte-didok&rows=1000&refine.haltestelle=*';
+
+            http.get(url, (resp) => {
+                let allStations = '';
+
+                // A chunk of data has been recieved.
+                resp.on('data', (chunk) => {
+                    allStations += chunk;
+                });
+
+                resp.on('end', () => {
+                    for(i in JSON.parse(allStations).records){
+                        stations.push(JSON.parse(allStations).records[i].fields.gdname);
+                    }
+
+                    resolve(stations);
+                });
+
+            }).on("error", (err) => {
+                console.log("Error: " + err.message);
+            });
+        });
+    },
+
 
 };

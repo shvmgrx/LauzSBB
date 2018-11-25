@@ -86,7 +86,7 @@
 
                      
     <p class="range-field">
-      <input type="range" id="duration"+"{{this}}" min="1" max="10" />
+      <input type="range" id="duration{{this}}" min="1" max="10" />
     </p>
     <button onclick='calc("{{this}}")'>SUBMIT</button>
   
@@ -102,13 +102,16 @@
 function calc(parking)
 {
     console.log("cost"+parking);
-    var cost = document.getElementById("cost"+parking);
-    var duration = document.getElementById("duration"+parking).value;
-    console.log(cost.value);
+    var cost = document.getElementById("cost"+parking).innerHTML;
+    var duration = document.getElementById("duration"+parking);
+    var totalCost = cost*duration.value;
+
+    document.getElementById("tc").innerHTML = cost * duration.value;
+
 }
      
  </script>
-<p class="flow-text">TOTAL COST:<h2 id="tc"></h2></p>
+<p class="flow-text">TOTAL COST:<h2 id="tc">0</h2></p>
     </p>
 
 
